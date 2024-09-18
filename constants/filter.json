@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Route 1",
+    "delay": 7,
+    "traffic": "Moderate"
+  },
+  {
+    "name": "Route 2",
+    "delay": 9,
+    "traffic": "High"
+  },
+  {
+    "name": "Route 3",
+    "delay": 30,
+    "traffic": "Severe"
+  },
+  {
+    "name": "Route 4",
+    "delay": 15,
+    "traffic": "Moderate"
+  },
+  {
+    "name": "Route 5",
+    "delay": 73,
+    "traffic": "Heavy"
+  },
+  {
+    "name": "Route 6",
+    "delay": 30,
+    "traffic": "Light"
+  },
+  {
+    "name": "Route 7",
+    "delay": 36,
+    "traffic": "Heavy"
+  },
+  {
+    "name": "Route 8",
+    "delay": 282,
+    "traffic": "Severe"
+  },
+  {
+    "name": "Route 9",
+    "delay": 30,
+    "traffic": "Light"
+  },
+  {
+    "name": "Route 10",
+    "delay": 5,
+    "traffic": "Low"
+  },
+  {
+    "name": "Route 11",
+    "delay": 247,
+    "traffic": "Severe"
+  },
+  {
+    "name": "Route 12",
+    "delay": 112,
+    "traffic": "Moderate"
+  }
+]
