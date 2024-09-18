@@ -10,24 +10,10 @@ import ScrollList from "@/components/ScrollList";
 import coordinates from "@/constants/markers";
 
 export default function Home() {
-  const [location, setLocation] = useState<Location.LocationObject>();
   const [errorMsg, setErrorMsg] = useState(null);
   const { driverId } = useLocalSearchParams();
   const mapRef = useRef(null); // Reference to MapView
   const [route, setRoute] = useState([]); // State to store route coordinates
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-      let location = await Location.getCurrentPositionAsync({});
-      if (location) console.log(location);
-      setLocation(location);
-    })();
-  }, []);
 
   // Function to animate map to a new region and set route
   const animateToRegion = (
@@ -36,6 +22,12 @@ export default function Home() {
     startLatitude,
     startLongitude
   ) => {
+    // Cast all coordinate values to float
+    endLatitude = parseFloat(""+endLatitude);
+    endLongitude = parseFloat(""+endLongitude);
+    startLatitude = parseFloat(""+startLatitude);
+    startLongitude = parseFloat(""+startLongitude);
+
     // Check if mapRef exists and is not null
     if (mapRef.current) {
       // Animate to the start location
@@ -70,8 +62,8 @@ export default function Home() {
         provider={PROVIDER_GOOGLE}
         customMapStyle={MapViewStyle}
         initialRegion={{
-          latitude: 30.7133,
-          longitude: 76.7594,
+          latitude: parseFloat(""+30.7133),
+          longitude: parseFloat(""+76.7594),
           latitudeDelta: 0.11,
           longitudeDelta: 0.11,
         }}
@@ -80,8 +72,8 @@ export default function Home() {
           <Marker
             key={index}
             coordinate={{
-              latitude: coordinate.latitude,
-              longitude: coordinate.longitude,
+              latitude: parseFloat(""+coordinate.latitude),
+              longitude: parseFloat(""+coordinate.longitude),
             }}
           >
             <Image source={icons.marker} />
@@ -94,7 +86,7 @@ export default function Home() {
       </MapView>
       <View className="z-20 bottom-24 absolute">
         <ScrollList onSelect={animateToRegion} />
-      </View>
+      </View> 
     </View>
   );
 }
